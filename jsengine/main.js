@@ -3,6 +3,8 @@ canvas.width = window.innerWidth -15;
 canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
 
+//This function will decide the color of a square
+//dependin on the row it is on the board
 function decideColor(i, j)
 {
     var white = "rgba(193,154,107)";
@@ -32,6 +34,8 @@ function decideColor(i, j)
 
     }
 }
+
+//this function tiles the board
 function tileBoard()
     {
         var x = 200;
