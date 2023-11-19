@@ -10,16 +10,14 @@ function decideColor(i, j)
     var white = "rgba(193,154,107)";
     var black = "rgba(102,51,0)"
 
-    if( i%2 == 0)
-    {
-        if(j%2 == 0) return black;
-        return white;
-    }
-    else
-    {
-        if(j%2 == 0) return white;
-        return black;
-    }
+    // There are two cases where the square should be black:
+    // 1. When both column and line are even (when you sum two 
+    //    even numbers, the result is always an even number)
+    // 2. When both column and line are odd (when you multiply
+    //    two odd numbers, the result is always an odd number)
+    
+    if((j + i) % 2 == 0 || (j * i) % 2 != 0) return black;
+    return white;
 }
 
 //this function tiles the board
