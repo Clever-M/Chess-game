@@ -12,34 +12,21 @@ function decideColor(i, j)
 
     if( i%2 == 0)
     {
-        if(j%2 == 0)
-        {
-            return black;
-        }
-        else
-        {
-            return white;
-        }
+        if(j%2 == 0) return black;
+        return white;
     }
     else
     {
-        if(j%2 == 0)
-        {
-            return white;
-        }
-        else
-        {
-            return black;
-        }
-
+        if(j%2 == 0) return white;
+        return black;
     }
 }
 
 //this function tiles the board
 function tileBoard()
     {
-        var x = 200;
-        var y = 0;
+        var x = window.innerWidth/3;
+        var y = 0 + window.innerHeight/6
         c.filter = "blur(2px)"
         c.fillStyle = "rgba(0, 0, 0, 0.7)";
         c.fillRect(x + 20, y + 20, 80*8, 80*8)
@@ -53,9 +40,28 @@ function tileBoard()
                 x = x + 80;
             }
             y = y + 80;
-            x = 200;
+            x = window.innerWidth/3;
         }
-
     }
+function drawPawn(x, y, color)
+{
+    console.log(color == "black");
+    c.fillStyle = color == "black" ? "rgb(0, 0, 0)" : "rgb(255, 255, 255)";
+
+    c.beginPath();
+    c.moveTo(x, y);
+    c.lineTo(x + 20, y + 50);
+    c.lineTo(x - 20, y + 50);
+    c.lineTo(x, y);
+    c.fill();
+    c.stroke();
+
+    c.beginPath();
+    c.arc(x, y, 15, 0, 2 * Math.PI);
+    c.fill();
+    c.stroke()
+}
+
 tileBoard();
-console.log(canvas);
+drawPawn(window.innerWidth/3 + 280, -425 + window.innerHeight, "black");
+drawPawn(window.innerWidth/3 + 200, -425 + window.innerHeight, "white");
